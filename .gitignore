@@ -1,0 +1,4 @@
+*.png
+shapenet_rendered/
+!docs_img/*
+*.json
