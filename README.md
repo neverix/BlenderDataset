@@ -24,6 +24,16 @@ cd BLENDER_PATH/2.90/python/bin
 ./python3.7m -m pip install numpy
 ```
 
+## Example
+```py
+from render_dataset import BlenderDataset
+import cv2
+ds = BlenderDataset("shapenet/cars/dataset_list.json", resolution=2048, shapenet_version="1")
+img, condinfo, mask = ds[28]
+img = img.transpose(1, 2, 0).astype(np.uint8)
+cv2.imwrite("img.png", img)
+```
+
 ## Data
 The rendering script looks for datasets in the dataset_list.json file. You can modify this to add your own files and paths or point to your own JSON dataset list using the `--dataset_list <filename>` flag when invoking `render_all.py`
 
@@ -96,3 +106,5 @@ python3 render_parallel.py --num_views 96 --engine EEVEE --headless
 - This code is adopted from this [GitHub repo](https://github.com/panmari/stanford-shapenet-renderer), we thank the author for sharing the codes!
 
 - The tome in the rendering comparison images was borrowed with permission from the [Loot Assets](https://github.com/webaverse/loot-assets) library.
+
+- [Original](https://github.com/lalalune/ImprovedShapenetRenderer) by [lalalune](https://github.com/lalalune).
